@@ -31,10 +31,7 @@ function createError(input, text) {
 }
 
 firstName.addEventListener('change', function () {
-  if (firstName.value === 'Sergey') {
-    alert('Имя как у нашего преподователя');
-  }
-
+  
   removeError(firstName);
 
   if (firstName.value.replace(/\s/g, '').length === 0) {
@@ -52,9 +49,6 @@ firstName.addEventListener('change', function () {
 });
 
 lastName.addEventListener('change', function () {
-  if (lastName.value === 'Eremenko') {
-    alert('Фамилия как у нашего наставника');
-  }
 
   removeError(lastName);
 

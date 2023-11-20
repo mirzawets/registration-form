@@ -3,34 +3,29 @@ const lastName = document.getElementById('last-name');
 const phoneNumber = document.getElementById('phone-number');
 const form = document.getElementById('add-form');
 
-let isFirstNameValidation;
-let isLastNameValidation;
-let isPhoneNumberValidation;
+let isFirstNameValidation, isLastNameValidation, isPhoneNumberValidation;
 
-function removeError(input) {
-  input.classList.remove('error-input');
-
-  const parent = input.parentNode;
-  if (parent.classList.contains('error-box')) {
-    parent.querySelector('.error-div').remove();
-    parent.classList.remove('error-box');
-  }
-}
-
-function createError(input, text) {
+function createError(input, errorText) {
   input.classList.add('error-input');
-
-  const parent = input.parentNode;
-  parent.classList.add('error-box');
+  input.parentNode.classList.add('error-box');
 
   const errorDiv = document.createElement('div');
   errorDiv.classList.add('error-div');
-  errorDiv.innerText = text;
+  errorDiv.innerText = errorText;
 
-  parent.append(errorDiv);
+  input.after(errorDiv);
 }
 
-firstName.addEventListener('change', function () {
+function removeError(input) {
+  input.classList.remove('error-input');
+  
+  if (input.parentNode.classList.contains('error-box')) {
+    input.parentNode.querySelector('.error-div').remove();
+    input.parentNode.classList.remove('error-box');
+  }
+}
+
+firstName.addEventListener('change', () => {
   
   removeError(firstName);
 
@@ -48,7 +43,7 @@ firstName.addEventListener('change', function () {
   }
 });
 
-lastName.addEventListener('change', function () {
+lastName.addEventListener('change', () => {
 
   removeError(lastName);
 
@@ -66,7 +61,7 @@ lastName.addEventListener('change', function () {
   }
 });
 
-phoneNumber.addEventListener('change', function () {
+phoneNumber.addEventListener('change', () => {
   removeError(phoneNumber);
 
   if (phoneNumber.value.replace(/\s/g, '').length === 0) {
@@ -86,11 +81,11 @@ form.addEventListener('change', () => {
   resultDiv.innerHTML = '';
 });
 
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   if (isFirstNameValidation && isLastNameValidation && isPhoneNumberValidation) {
-    resultDiv.innerHTML = `Спасибо за отправку формы, ваши данные:<br>FirstName : ${firstName.value}<br>LastName : ${lastName.value}<br>PhoneNumber : ${phoneNumber.value}`;
-    form.after(resultDiv);
+    resultDiv.innerHTML = `Thank you for submitting the form, your details:<br>First name: ${firstName.value}<br>Last name: ${lastName.value}<br>Phone number: ${phoneNumber.value}`;
+    form.append(resultDiv);
   }
 });

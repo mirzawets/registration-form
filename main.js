@@ -6,8 +6,8 @@ const form = document.getElementById('add-form');
 let isFirstNameValidation, isLastNameValidation, isPhoneNumberValidation;
 
 function createError(input, errorText) {
-  input.classList.add('error-input');
   input.parentNode.classList.add('error-box');
+  input.classList.add('error-input');
 
   const errorDiv = document.createElement('div');
   errorDiv.classList.add('error-div');
@@ -17,9 +17,8 @@ function createError(input, errorText) {
 }
 
 function removeError(input) {
-  input.classList.remove('error-input');
-  
   if (input.parentNode.classList.contains('error-box')) {
+    input.classList.remove('error-input');
     input.parentNode.querySelector('.error-div').remove();
     input.parentNode.classList.remove('error-box');
   }

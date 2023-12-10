@@ -84,7 +84,7 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   if (isFirstNameValidation && isLastNameValidation && isPhoneNumberValidation) {
-    resultDiv.innerHTML = `Thank you for submitting the form, your details:<br>First name: ${firstName.value}<br>Last name: ${lastName.value}<br>Phone number: ${phoneNumber.value}`;
+    resultDiv.innerHTML = `Form submitted, your details:<br>First name: ${firstName.value}<br>Last name: ${lastName.value}<br>Phone number: ${phoneNumber.value}`;
     form.append(resultDiv);
   }
 });
